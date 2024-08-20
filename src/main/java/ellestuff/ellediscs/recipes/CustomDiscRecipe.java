@@ -38,7 +38,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
                 }
 
                 hasLabel = true;
-            }
+            } else if (!itemStack.isEmpty()) { return false; };
         }
         return hasRecord && hasLabel;
     }
