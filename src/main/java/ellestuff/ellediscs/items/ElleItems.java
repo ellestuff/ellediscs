@@ -23,7 +23,7 @@ public class ElleItems {
 
     public static void registerElleItems() {
         // Ingredients Group
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
             content.add(DISC_RECORD);
             content.add(DISC_LABEL);
         });

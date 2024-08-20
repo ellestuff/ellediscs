@@ -2,5 +2,6 @@
   "item.ellediscs.disc_record": "Disc Record",
   "item.ellediscs.disc_label": "Disc Label",
 
-  "item.ellediscs.custom_disc": "Dyed Music Disc"
+  "item.ellediscs.custom_disc": "Dyed Music Disc",
+  "item.ellediscs.custom_disc.desc": "Use /audioplayer to apply audio"
 }

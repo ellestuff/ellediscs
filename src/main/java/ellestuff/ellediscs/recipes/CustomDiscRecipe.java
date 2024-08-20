@@ -22,6 +22,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
     public boolean matches(RecipeInputInventory recipeInputInventory, World world) {
         boolean hasRecord = false;
         boolean hasLabel = false;
+        int dust = 0;
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
@@ -52,7 +53,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
 
     public ItemStack craft(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager) {
         ItemStack result = new ItemStack(ElleItems.DYED_MUSIC_DISC);
-        NbtCompound nbtCompound = result.getOrCreateSubNbt("display");
+        NbtCompound nbtCompound = result.getOrCreateSubNbt("colours");
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
