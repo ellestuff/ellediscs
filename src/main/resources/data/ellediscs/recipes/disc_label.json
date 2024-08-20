@@ -3,12 +3,13 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "minecraft:paper"
+      "item": "minecraft:paper"
     }
   },
   "pattern": [
-    "##",
-    "##"
+    " # ",
+    "# #",
+    " # "
   ],
   "result": {
     "item": "ellediscs:disc_label"
