@@ -25,6 +25,5 @@ public class ElleDiscs implements ModInitializer {
 
 		Registry.register(Registries.RECIPE_SERIALIZER, DiscRecipeSerializer.ID,
 				DiscRecipeSerializer.INSTANCE);
-		Registry.register(Registries.RECIPE_TYPE, new Identifier(MODID, CustomDiscRecipe.Type.ID), CustomDiscRecipe.Type.INSTANCE);
 	}
 }

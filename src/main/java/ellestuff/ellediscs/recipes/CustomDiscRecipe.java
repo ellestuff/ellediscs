@@ -52,7 +52,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
 
     public ItemStack craft(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager) {
         ItemStack result = new ItemStack(ElleItems.DYED_MUSIC_DISC);
-        NbtCompound nbtCompound = result.getOrCreateSubNbt("Colours");
+        NbtCompound nbtCompound = result.getOrCreateSubNbt("display");
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
@@ -69,18 +69,5 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
 
     public DiscRecipeSerializer getSerializer() {
         return DiscRecipeSerializer.INSTANCE;
-    }
-
-    public static class Type implements RecipeType<CustomDiscRecipe> {
-        // Define ExampleRecipe.Type as a singleton by making its constructor private and exposing an instance.
-        private Type() {}
-        public static final Type INSTANCE = new Type();
-
-        // This will be needed in step 4
-        public static final String ID = "disc_create";
-    }
-    @Override
-    public RecipeType<?> getType() {
-        return Type.INSTANCE;
     }
 }

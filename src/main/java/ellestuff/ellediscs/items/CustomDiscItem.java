@@ -13,7 +13,7 @@ public class CustomDiscItem extends MusicDiscItem implements DyeableItem {
     int DEFAULT_LABEL_COLOR;
 
     public CustomDiscItem(Item.Settings settings, int record_colour, int label_colour) {
-        super(15, SoundEvents.INTENTIONALLY_EMPTY, settings, 0);
+        super(15, SoundEvents.INTENTIONALLY_EMPTY, settings, 1);
         DEFAULT_RECORD_COLOR = record_colour;
         DEFAULT_LABEL_COLOR = label_colour;
     }
