@@ -70,4 +70,17 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
     public DiscRecipeSerializer getSerializer() {
         return DiscRecipeSerializer.INSTANCE;
     }
+
+    public static class Type implements RecipeType<CustomDiscRecipe> {
+        // Define ExampleRecipe.Type as a singleton by making its constructor private and exposing an instance.
+        private Type() {}
+        public static final Type INSTANCE = new Type();
+
+        // This will be needed in step 4
+        public static final String ID = "disc_create";
+    }
+    @Override
+    public RecipeType<?> getType() {
+        return Type.INSTANCE;
+    }
 }

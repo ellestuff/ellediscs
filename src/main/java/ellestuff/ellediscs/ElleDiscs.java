@@ -1,7 +1,12 @@
 package ellestuff.ellediscs;
 
+import ellestuff.ellediscs.recipes.CustomDiscRecipe;
+import ellestuff.ellediscs.recipes.DiscRecipeSerializer;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,5 +22,9 @@ public class ElleDiscs implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		registerElleItems();
+
+		Registry.register(Registries.RECIPE_SERIALIZER, DiscRecipeSerializer.ID,
+				DiscRecipeSerializer.INSTANCE);
+		Registry.register(Registries.RECIPE_TYPE, new Identifier(MODID, CustomDiscRecipe.Type.ID), CustomDiscRecipe.Type.INSTANCE);
 	}
 }
