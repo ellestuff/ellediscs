@@ -67,14 +67,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
         return result;
     }
 
-    public Ingredient getLabel() {
-        return LABEL;
-    }
-
-    public Ingredient getRecord() {
-        return RECORD;
-    }
-
     public DiscRecipeSerializer getSerializer() {
-        return DiscRecipeSerializer.INSTANCE;}
+        return DiscRecipeSerializer.INSTANCE;
+    }
 }

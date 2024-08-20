@@ -12,13 +12,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registries;
 
 public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
-    private DiscRecipeSerializer() {
-    }
+    private DiscRecipeSerializer() { }
 
     public static final DiscRecipeSerializer INSTANCE = new DiscRecipeSerializer();
 
-    // This will be the "type" field in the json
-    public static final Identifier ID = new Identifier("example:example_recipe");
+    public static final Identifier ID = new Identifier("ellediscs:disc_create");
 
     @Override
     // Turns json into Recipe
@@ -33,7 +31,6 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     @Override
     // Turns PacketByteBuf into Recipe
     public CustomDiscRecipe read(Identifier id, PacketByteBuf packetData) {
-        // Make sure the read in the same order you have written!
         return new CustomDiscRecipe(id, CraftingRecipeCategory.MISC);
     }
 }
