@@ -1,4 +1,4 @@
-package ellestuff.ellediscs;
+package ellestuff.ellediscs.items;
 
 import net.minecraft.item.DyeableItem;
 import net.minecraft.item.Item;
@@ -13,6 +13,7 @@ public class DiscIngredientItem extends Item implements DyeableItem {
         DEFAULT_COLOR = defaultColour;
     }
 
+    @Override
     public int getColor(ItemStack stack) {
         NbtCompound nbtCompound = stack.getSubNbt("display");
         return nbtCompound != null && nbtCompound.contains("color", 99) ? nbtCompound.getInt("color") : DEFAULT_COLOR;

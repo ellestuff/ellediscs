@@ -5,7 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static ellestuff.ellediscs.ElleItems.registerElleItems;
+import static ellestuff.ellediscs.items.ElleItems.registerElleItems;
 
 public class ElleDiscs implements ModInitializer {
 	// This logger is used to write text to the console and the log file.

@@ -17,6 +17,9 @@
 	"entrypoints": {
 		"main": [
           "ellestuff.ellediscs.ElleDiscs"
+		],
+		"client": [
+          "ellestuff.ellediscs.ElleDiscsClient"
 		]
 	},
 	"mixins": [
