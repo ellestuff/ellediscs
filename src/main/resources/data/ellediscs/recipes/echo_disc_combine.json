@@ -4,8 +4,8 @@
     "item": "ellediscs:disc_record"
   },
   "label": {
-    "item": "ellediscs:disc_label"
+    "item": "ellediscs:echo_label"
   },
-  "outputDisc": "ellediscs:custom_disc",
-  "accents": true
+  "outputDisc": "ellediscs:custom_echo_disc",
+  "accents": false
 }

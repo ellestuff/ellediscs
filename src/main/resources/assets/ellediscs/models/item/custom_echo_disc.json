@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ellediscs:item/echo_disc_bottom",
+    "layer1": "ellediscs:item/echo_disc_top"
+  }
+}

@@ -1,7 +1,13 @@
 {
-  "item.ellediscs.disc_record": "Disc Record",
+  "item.ellediscs.disc_record": "Blank Record",
   "item.ellediscs.disc_label": "Disc Label",
 
+  "item.ellediscs.echo_label": "Echo Label",
+  "item.ellediscs.broken_record": "Broken Record",
+
   "item.ellediscs.custom_disc": "Dyed Music Disc",
-  "item.ellediscs.custom_disc.desc": "Use /audioplayer to apply audio"
+  "item.ellediscs.custom_broken_disc": "Dyed Broken Disc",
+  "item.ellediscs.custom_echo_disc": "Dyed Echo Disc",
+
+  "item.ellediscs.discs.tip": "Use /audioplayer to apply audio"
 }

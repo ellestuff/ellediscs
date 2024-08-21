@@ -5,10 +5,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
-public class DiscIngredientItem extends Item implements DyeableItem {
+public class CustomDyeableItem extends Item implements DyeableItem {
     int DEFAULT_COLOR;
 
-    public DiscIngredientItem (int defaultColour, Item.Settings settings) {
+    public CustomDyeableItem(int defaultColour, Item.Settings settings) {
         super(settings);
         DEFAULT_COLOR = defaultColour;
     }

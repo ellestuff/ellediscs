@@ -21,16 +21,32 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     @Override
     // Turns json into Recipe
     public CustomDiscRecipe read(Identifier id, JsonObject json) {
-        return new CustomDiscRecipe(id, CraftingRecipeCategory.MISC);
+        DiscRecipeJsonFormat recipeJson = new Gson().fromJson(json, DiscRecipeJsonFormat.class);
+
+        Ingredient record = Ingredient.fromJson(recipeJson.record);
+        Ingredient label = Ingredient.fromJson(recipeJson.label);
+        Item outputItem = Registries.ITEM.getOrEmpty(new Identifier(recipeJson.outputDisc)).get();
+        ItemStack output = new ItemStack(outputItem, 1);
+
+        return new CustomDiscRecipe(record, label, output, recipeJson.accents, id, CraftingRecipeCategory.MISC);
     }
     @Override
     // Turns Recipe into PacketByteBuf
     public void write(PacketByteBuf packetData, CustomDiscRecipe recipe) {
+        recipe.getRecord().write(packetData);
+        recipe.getLabel().write(packetData);
+        packetData.writeItemStack(recipe.getOutput());
+        packetData.writeBoolean(recipe.getAccentBool());
     }
 
     @Override
     // Turns PacketByteBuf into Recipe
     public CustomDiscRecipe read(Identifier id, PacketByteBuf packetData) {
-        return new CustomDiscRecipe(id, CraftingRecipeCategory.MISC);
+        Ingredient record = Ingredient.fromPacket(packetData);
+        Ingredient label = Ingredient.fromPacket(packetData);
+        ItemStack output = packetData.readItemStack();
+        boolean accents = packetData.readBoolean();
+
+        return new CustomDiscRecipe(record, label, output, accents, id, CraftingRecipeCategory.MISC);
     }
 }
