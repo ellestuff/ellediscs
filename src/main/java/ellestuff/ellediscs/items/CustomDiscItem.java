@@ -1,13 +1,10 @@
 package ellestuff.ellediscs.items;
 
-import ellestuff.ellediscs.ElleSoundEvents;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.DyeableItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
@@ -23,7 +20,7 @@ public class CustomDiscItem extends MusicDiscItem {
     int comparatorOutput;
 
     public CustomDiscItem(Item.Settings settings, int record_colour, int label_colour) {
-        super(15, ElleSoundEvents.SILENCE, settings, 1);
+        super(15, SoundEvents.INTENTIONALLY_EMPTY, settings, 1);
         DEFAULT_RECORD_COLOR = record_colour;
         DEFAULT_LABEL_COLOR = label_colour;
     }
@@ -43,19 +40,19 @@ public class CustomDiscItem extends MusicDiscItem {
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(this.getDescription().formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("item.ellediscs.discs.tip").formatted(Formatting.GRAY));
 
         if (context.isAdvanced()) {
             String record_hex = Integer.toHexString(this.getRecordColor(stack)).toUpperCase();
             String label_hex = Integer.toHexString(this.getLabelColor(stack)).toUpperCase();
 
-            String colour_tooltip = String.format("Record: #%s, Label: #%s", record_hex, label_hex);
-            tooltip.add(Text.literal(colour_tooltip).formatted(Formatting.GRAY));
+            // This looks so dumb lol
+            MutableText colour_tooltip = Text.translatable("item.ellediscs.discs.record")
+                    .append(String.format(": #%s, ", record_hex))
+                            .append(Text.translatable("item.ellediscs.discs.label"))
+                                    .append(String.format(": #%s", label_hex));
+            tooltip.add(colour_tooltip.formatted(Formatting.GRAY));
         }
-    }
-
-    public MutableText getDescription() {
-        return Text.translatable("item.ellediscs.discs.tip");
     }
 
 }
