@@ -8,11 +8,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
-
-import java.util.Optional;
+import net.minecraft.registry.Registries;
 
 public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     private DiscRecipeSerializer() { }
@@ -28,26 +25,16 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
 
         Ingredient record = Ingredient.fromJson(recipeJson.record);
         Ingredient label = Ingredient.fromJson(recipeJson.label);
-
-        Optional<Ingredient> modifier = Optional.empty();
-        if (JsonHelper.hasElement(json, "modifier")) {
-            modifier = Optional.of(Ingredient.fromJson(JsonHelper.getObject(json, "modifier")));
-        }
-
         Item outputItem = Registries.ITEM.getOrEmpty(new Identifier(recipeJson.outputDisc)).get();
         ItemStack output = new ItemStack(outputItem, 1);
 
-        return new CustomDiscRecipe(record, label, modifier, output, recipeJson.accents, id, CraftingRecipeCategory.MISC);
+        return new CustomDiscRecipe(record, label, output, recipeJson.accents, id, CraftingRecipeCategory.MISC);
     }
     @Override
     // Turns Recipe into PacketByteBuf
     public void write(PacketByteBuf packetData, CustomDiscRecipe recipe) {
         recipe.getRecord().write(packetData);
         recipe.getLabel().write(packetData);
-        packetData.writeBoolean(recipe.getModifier().isPresent());
-        if (recipe.getModifier().isPresent()) {
-            recipe.getModifier().get().write(packetData);
-        }
         packetData.writeItemStack(recipe.getOutput());
         packetData.writeBoolean(recipe.getAccentBool());
     }
@@ -57,13 +44,9 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     public CustomDiscRecipe read(Identifier id, PacketByteBuf packetData) {
         Ingredient record = Ingredient.fromPacket(packetData);
         Ingredient label = Ingredient.fromPacket(packetData);
-        Optional<Ingredient> modifier = Optional.empty();
-        if (packetData.readBoolean()) {
-            modifier = Optional.of(Ingredient.fromPacket(packetData));
-        }
         ItemStack output = packetData.readItemStack();
         boolean accents = packetData.readBoolean();
 
-        return new CustomDiscRecipe(record, label, modifier, output, accents, id, CraftingRecipeCategory.MISC);
+        return new CustomDiscRecipe(record, label, output, accents, id, CraftingRecipeCategory.MISC);
     }
 }
