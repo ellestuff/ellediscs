@@ -1,13 +1,10 @@
 package ellestuff.ellediscs.items;
 
 import ellestuff.ellediscs.ElleSoundEvents;
-import net.minecraft.item.DyeableItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.Registries;
-import net.minecraft.sound.SoundEvents;
 
 public class CustomDiscItem extends MusicDiscItem {
     int DEFAULT_RECORD_COLOR;

@@ -3,10 +3,9 @@ package ellestuff.ellediscs;
 import ellestuff.ellediscs.recipes.DiscRecipeSerializer;
 import net.fabricmc.api.ModInitializer;
 
+import net.minecraft.util.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static ellestuff.ellediscs.items.ElleItems.registerElleItems;
 
 public class ElleDiscs implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -17,9 +16,8 @@ public class ElleDiscs implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		registerElleItems();
 
-		Registry.register(Registries.RECIPE_SERIALIZER, DiscRecipeSerializer.ID,
+		Registry.register(Registry.RECIPE_SERIALIZER, DiscRecipeSerializer.ID,
 				DiscRecipeSerializer.INSTANCE);
 	}
 }
