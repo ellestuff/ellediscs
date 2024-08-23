@@ -11,5 +11,18 @@
 
   "item.ellediscs.discs.tip": "Use /audioplayer to apply audio",
   "item.ellediscs.discs.record": "Record",
-  "item.ellediscs.discs.label": "Label"
+  "item.ellediscs.discs.label": "Label",
+
+  "item.ellediscs.label_pattern": "Label Pattern",
+
+  "discpattern.ellediscs.none": "Blank",
+  "discpattern.ellediscs.center": "Center",
+  "discpattern.ellediscs.cracked": "Cracked",
+  "discpattern.ellediscs.dual": "Dual",
+  "discpattern.ellediscs.edges": "Edges",
+  "discpattern.ellediscs.gilded": "Gilded",
+  "discpattern.ellediscs.gradient": "Gradient",
+  "discpattern.ellediscs.spiral": "Spiral",
+  "discpattern.ellediscs.streaked": "Streaked",
+  "discpattern.ellediscs.striped": "Striped"
 }

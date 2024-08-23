@@ -1,0 +1,5 @@
+{
+  "type": "ellediscs:disc_separate",
+  "input": { "item": "minecraft:music_disc_blocks" },
+  "label": "ellediscs:echo_label"
+}
