@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "ellestuff.ellediscs.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ElleItemRendererMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

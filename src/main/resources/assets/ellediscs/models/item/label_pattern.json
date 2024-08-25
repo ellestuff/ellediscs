@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "ellediscs:item/label_pattern",
+    "layer1": "ellediscs:item/disc_patterns/none",
+    "layer2": "ellediscs:item/label_pattern_top"
+  }
+}

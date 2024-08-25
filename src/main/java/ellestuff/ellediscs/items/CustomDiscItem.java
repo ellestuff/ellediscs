@@ -35,9 +35,7 @@ public class CustomDiscItem extends MusicDiscItem {
         return nbtCompound != null && nbtCompound.contains("LabelColour", 99) ? nbtCompound.getInt("LabelColour") : DEFAULT_LABEL_COLOR;
     }
 
-    public void setComparatorOutput(int comparatorOutput) {
-        this.comparatorOutput = comparatorOutput;
-    }
+    //public void setComparatorOutput(int comparatorOutput) { this.comparatorOutput = comparatorOutput; }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("item.ellediscs.discs.tip").formatted(Formatting.GRAY));
@@ -55,4 +53,15 @@ public class CustomDiscItem extends MusicDiscItem {
         }
     }
 
+    @Override
+    public String getTranslationKey(ItemStack stack) {
+        if (stack.hasNbt()) {
+            NbtCompound nbt = stack.getNbt();
+            if (nbt != null && nbt.contains("CustomSound")) {
+                return "item.ellediscs.music_disc";
+            }
+        }
+
+        return super.getTranslationKey();
+    }
 }

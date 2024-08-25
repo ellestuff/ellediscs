@@ -8,8 +8,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
-import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
 
 public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     private DiscRecipeSerializer() { }
