@@ -1,7 +1,5 @@
 package ellestuff.ellediscs.patterns;
 
-import net.minecraft.util.Identifier;
-
 public class DiscPattern {
     private final String name;
     private final String namespace;
@@ -9,11 +7,12 @@ public class DiscPattern {
 
     public DiscPattern(String name, String namespace) {
         this.name = name;
-        this.texturePath = namespace + ":textures/disc_patterns/" + name + ".png";
+        this.texturePath = namespace + ":item/disc_patterns/" + name;
         this.namespace = namespace;
     }
 
     public String getName() { return name; }
     public String getTexturePath() { return texturePath; }
     public String getTranslationKey() { return "discpattern." + namespace + "." + name; }
+    public String getId() { return namespace + ":" + name; }
 }

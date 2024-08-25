@@ -1,6 +1,7 @@
 package ellestuff.ellediscs.items;
 
 import ellestuff.ellediscs.ElleDiscs;
+import ellestuff.ellediscs.patterns.ElleDiscPatterns;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
@@ -23,6 +24,9 @@ public class ElleItems {
     public static final Item DYED_MUSIC_DISC = registerItem("custom_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff));
     public static final Item DYED_BROKEN_DISC = registerItem("custom_broken_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff));
     public static final Item DYED_ECHO_DISC = registerItem("custom_echo_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x646464, 0x29dfeb));
+
+    // Pattern Items
+    public static final Item LABEL_PATTERN = ElleItems.registerItem("label_pattern", new DiscPatternItem(ElleDiscPatterns.NONE, 0xffffff, new FabricItemSettings()));
 
     public static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(ElleDiscs.MODID, name), item);

@@ -1,11 +1,11 @@
 package ellestuff.ellediscs.recipes;
 
 import ellestuff.ellediscs.items.CustomDyeableItem;
-import ellestuff.ellediscs.items.ElleItems;
 import net.minecraft.inventory.RecipeInputInventory;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
