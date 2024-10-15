@@ -4,7 +4,10 @@
     "item": "ellediscs:disc_record"
   },
   "label": {
-    "item": "ellediscs:echo_label"
+    "item": "ellediscs:disc_label"
+  },
+  "modifier": {
+    "item": "minecraft:echo_shard"
   },
   "outputDisc": "ellediscs:custom_echo_disc",
   "accents": false

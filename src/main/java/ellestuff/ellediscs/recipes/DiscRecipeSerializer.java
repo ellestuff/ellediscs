@@ -25,10 +25,11 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
 
         Ingredient record = Ingredient.fromJson(recipeJson.record);
         Ingredient label = Ingredient.fromJson(recipeJson.label);
+        Ingredient modifier = Ingredient.fromJson(recipeJson.modifier);
         Item outputItem = Registries.ITEM.getOrEmpty(new Identifier(recipeJson.outputDisc)).get();
         ItemStack output = new ItemStack(outputItem, 1);
 
-        return new CustomDiscRecipe(record, label, output, recipeJson.accents, id, CraftingRecipeCategory.MISC);
+        return new CustomDiscRecipe(record, label, modifier, output, recipeJson.accents, id, CraftingRecipeCategory.MISC);
     }
     @Override
     // Turns Recipe into PacketByteBuf
@@ -44,9 +45,10 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     public CustomDiscRecipe read(Identifier id, PacketByteBuf packetData) {
         Ingredient record = Ingredient.fromPacket(packetData);
         Ingredient label = Ingredient.fromPacket(packetData);
+        Ingredient modifier = Ingredient.fromPacket(packetData);
         ItemStack output = packetData.readItemStack();
         boolean accents = packetData.readBoolean();
 
-        return new CustomDiscRecipe(record, label, output, accents, id, CraftingRecipeCategory.MISC);
+        return new CustomDiscRecipe(record, label, modifier, output, accents, id, CraftingRecipeCategory.MISC);
     }
 }
