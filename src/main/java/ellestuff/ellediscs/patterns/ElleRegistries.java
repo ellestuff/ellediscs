@@ -13,6 +13,7 @@ public class ElleRegistries {
             .buildAndRegister();
 
     public static DiscPattern register(String name) {
-        return Registry.register(DISC_PATTERN, new Identifier(ElleDiscs.MODID, name), new DiscPattern(name, ElleDiscs.MODID));
+        Identifier identifier = new Identifier(ElleDiscs.MODID, name);
+        return Registry.register(DISC_PATTERN, identifier, new DiscPattern(identifier));
     }
 }

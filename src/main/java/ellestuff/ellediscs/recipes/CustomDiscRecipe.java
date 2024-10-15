@@ -12,15 +12,18 @@ import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
+import java.util.Optional;
+
 public class CustomDiscRecipe extends SpecialCraftingRecipe {
     private final Ingredient record;
     private final Ingredient label;
-    private final Ingredient modifier;
+    private final Optional<Ingredient> modifier;
     private final ItemStack output;
     private final boolean accents;
 
-    public CustomDiscRecipe(Ingredient record, Ingredient label, Ingredient modifier, ItemStack output, boolean allowsAccents, Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
+    public CustomDiscRecipe(Ingredient record, Ingredient label, Optional<Ingredient> modifier, ItemStack output, boolean allowsAccents, Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
+
         this.record = record;
         this.label = label;
         this.modifier = modifier;
@@ -38,9 +41,6 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
-            if (itemStack.isEmpty()) { continue; }
-
-            System.out.println(modifier.getMatchingStacks()[0]);
 
             if (record.test(itemStack)) {
                 if (hasRecord) {
@@ -52,12 +52,14 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
                     return false;
                 }
                 hasLabel = true;
-            } else if (modifier.test(itemStack)) {
-                if (hasModifier) {
+            } else if (modifier.isPresent() && modifier.get().test(itemStack)) {
+                if (hasModifier && !itemStack.isEmpty()) {
                     return false;
                 }
                 hasModifier = true;
-            } else { return false; };
+            } else if (!itemStack.isEmpty()) {
+                return false;
+            };
         }
         return hasRecord && hasLabel && (hasModifier || modifier.isEmpty());
     }
@@ -68,7 +70,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
 
     public Ingredient getRecord() { return record; }
     public Ingredient getLabel() { return label; }
-    public Ingredient getModifier() { return modifier; }
+    public Optional<Ingredient> getModifier() { return modifier; }
     public ItemStack getOutput() { return output; }
     public Boolean getAccentBool() { return accents; }
 

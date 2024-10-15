@@ -15,9 +15,6 @@ public class ElleDiscsClient implements ClientModInitializer {
 		registerColouredItem(DISC_RECORD);
 		registerColouredItem(DISC_LABEL);
 
-		registerColouredItem(BROKEN_RECORD);
-		registerColouredItem(ECHO_LABEL);
-
 		registerCustomDisc(DYED_MUSIC_DISC);
 		registerCustomDisc(DYED_BROKEN_DISC);
 		registerCustomDisc(DYED_ECHO_DISC);
