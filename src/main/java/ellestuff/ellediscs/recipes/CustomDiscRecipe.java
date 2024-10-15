@@ -57,7 +57,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
-            if (!itemStack.isEmpty()) {
+            if (!itemStack.isEmpty() && ((DyeableItem)itemStack.getItem()).hasColor(itemStack)) {
                 if (RECORD.test(itemStack)) {
                     nbtCompound.putInt("RecordColour", ((DiscIngredientItem)itemStack.getItem()).getColor(itemStack));
                 } else if (LABEL.test(itemStack)) {

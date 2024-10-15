@@ -1,6 +1,5 @@
 package ellestuff.ellediscs.items;
 
-import ellestuff.ellediscs.ElleSoundEvents;
 import net.minecraft.item.DyeableItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +14,7 @@ public class CustomDiscItem extends MusicDiscItem {
     int comparatorOutput;
 
     public CustomDiscItem(Item.Settings settings, int record_colour, int label_colour) {
-        super(15, ElleSoundEvents.SILENCE, settings, 1);
+        super(15, SoundEvents.INTENTIONALLY_EMPTY, settings, 1);
         DEFAULT_RECORD_COLOR = record_colour;
         DEFAULT_LABEL_COLOR = label_colour;
     }
@@ -32,5 +31,15 @@ public class CustomDiscItem extends MusicDiscItem {
 
     public void setComparatorOutput(int comparatorOutput) {
         this.comparatorOutput = comparatorOutput;
+    }
+
+    @Override
+    public String getTranslationKey(ItemStack stack) {
+        String str = "item.ellediscs.custom_disc";
+        NbtCompound nbtCompound = stack.getNbt();
+
+        if (nbtCompound != null && nbtCompound.contains("CustomSound")) { str = "item.ellediscs.custom_disc_used"; }
+
+        return str;
     }
 }
