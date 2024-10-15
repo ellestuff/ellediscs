@@ -1,67 +1,92 @@
 package ellestuff.ellediscs.recipes;
 
-import ellestuff.ellediscs.items.DiscIngredientItem;
-import ellestuff.ellediscs.items.ElleItems;
+import ellestuff.ellediscs.items.CustomDyeableItem;
 import net.minecraft.inventory.RecipeInputInventory;
-import net.minecraft.item.*;
+import net.minecraft.item.DyeableItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
-public class CustomDiscRecipe extends SpecialCraftingRecipe {
-    private static final Ingredient RECORD = Ingredient.ofItems(new ItemConvertible[]{ElleItems.DISC_RECORD});
-    private static final Ingredient LABEL = Ingredient.ofItems(new ItemConvertible[]{ElleItems.DISC_LABEL});
+import java.util.Optional;
 
-    public CustomDiscRecipe(Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
+public class CustomDiscRecipe extends SpecialCraftingRecipe {
+    private final Ingredient record;
+    private final Ingredient label;
+    private final Optional<Ingredient> modifier;
+    private final ItemStack output;
+    private final boolean accents;
+
+    public CustomDiscRecipe(Ingredient record, Ingredient label, Optional<Ingredient> modifier, ItemStack output, boolean allowsAccents, Identifier identifier, CraftingRecipeCategory craftingRecipeCategory) {
         super(identifier, craftingRecipeCategory);
+
+        this.record = record;
+        this.label = label;
+        this.modifier = modifier;
+        this.output = output;
+        this.accents = allowsAccents;
     }
 
     public boolean matches(RecipeInputInventory recipeInputInventory, World world) {
         boolean hasRecord = false;
         boolean hasLabel = false;
-        int dust = 0;
+        boolean hasModifier = false;
+        //int dust = 0;
+
+
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
-            if (RECORD.test(itemStack)) {
+
+            if (record.test(itemStack)) {
                 if (hasRecord) {
                     return false;
                 }
-
                 hasRecord = true;
-            } else if (LABEL.test(itemStack)) {
+            } else if (label.test(itemStack)) {
                 if (hasLabel) {
                     return false;
                 }
-
                 hasLabel = true;
-            } else if (!itemStack.isEmpty()) { return false; };
+            } else if (modifier.isPresent() && modifier.get().test(itemStack)) {
+                if (hasModifier && !itemStack.isEmpty()) {
+                    return false;
+                }
+                hasModifier = true;
+            } else if (!itemStack.isEmpty()) {
+                return false;
+            };
         }
-        return hasRecord && hasLabel;
+        return hasRecord && hasLabel && (hasModifier || modifier.isEmpty());
     }
 
     public boolean fits(int width, int height) {
         return width * height >= 2;
     }
 
-    public ItemStack getOutput() {
-        return new ItemStack(ElleItems.DYED_MUSIC_DISC);
-    }
+    public Ingredient getRecord() { return record; }
+    public Ingredient getLabel() { return label; }
+    public Optional<Ingredient> getModifier() { return modifier; }
+    public ItemStack getOutput() { return output; }
+    public Boolean getAccentBool() { return accents; }
 
     public ItemStack craft(RecipeInputInventory recipeInputInventory, DynamicRegistryManager dynamicRegistryManager) {
-        ItemStack result = new ItemStack(ElleItems.DYED_MUSIC_DISC);
+        ItemStack result = output.copy();
         NbtCompound nbtCompound = result.getOrCreateSubNbt("colours");
 
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
-            if (!itemStack.isEmpty() && ((DyeableItem)itemStack.getItem()).hasColor(itemStack)) {
-                if (RECORD.test(itemStack)) {
-                    nbtCompound.putInt("RecordColour", ((DiscIngredientItem)itemStack.getItem()).getColor(itemStack));
-                } else if (LABEL.test(itemStack)) {
-                    nbtCompound.putInt("LabelColour", ((DiscIngredientItem)itemStack.getItem()).getColor(itemStack));
+            if (!itemStack.isEmpty()) {
+                if (itemStack.getItem() instanceof DyeableItem && ((DyeableItem)itemStack.getItem()).hasColor(itemStack)) {
+                    if (record.test(itemStack)) {
+                        nbtCompound.putInt("RecordColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
+                    } else if (label.test(itemStack)) {
+                        nbtCompound.putInt("LabelColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
+                    }
                 }
             }
         }

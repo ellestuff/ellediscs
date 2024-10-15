@@ -1,5 +1,11 @@
 package ellestuff.ellediscs.recipes;
 
-import net.minecraft.recipe.book.CraftingRecipeCategory;
+import com.google.gson.JsonObject;
 
-public class DiscRecipeJsonFormat { }
+public class DiscRecipeJsonFormat {
+    JsonObject record;
+    JsonObject label;
+    JsonObject modifier;
+    String outputDisc;
+    boolean accents;
+}

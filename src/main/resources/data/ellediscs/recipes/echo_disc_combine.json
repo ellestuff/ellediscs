@@ -6,6 +6,9 @@
   "label": {
     "item": "ellediscs:disc_label"
   },
-  "outputDisc": "ellediscs:custom_disc",
-  "accents": true
+  "modifier": {
+    "item": "minecraft:echo_shard"
+  },
+  "outputDisc": "ellediscs:custom_echo_disc",
+  "accents": false
 }

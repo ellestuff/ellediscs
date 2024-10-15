@@ -1,17 +1,22 @@
 package ellestuff.ellediscs.items;
 
-import net.minecraft.item.DyeableItem;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class CustomDiscItem extends MusicDiscItem {
     int DEFAULT_RECORD_COLOR;
     int DEFAULT_LABEL_COLOR;
-    int comparatorOutput;
 
     public CustomDiscItem(Item.Settings settings, int record_colour, int label_colour) {
         super(15, SoundEvents.INTENTIONALLY_EMPTY, settings, 1);
@@ -29,17 +34,22 @@ public class CustomDiscItem extends MusicDiscItem {
         return nbtCompound != null && nbtCompound.contains("LabelColour", 99) ? nbtCompound.getInt("LabelColour") : DEFAULT_LABEL_COLOR;
     }
 
-    public void setComparatorOutput(int comparatorOutput) {
-        this.comparatorOutput = comparatorOutput;
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("item.ellediscs.discs.tip").formatted(Formatting.GRAY));
+
+        if (context.isAdvanced()) {
+            String record_hex = Integer.toHexString(this.getRecordColor(stack)).toUpperCase();
+            String label_hex = Integer.toHexString(this.getLabelColor(stack)).toUpperCase();
+
+            MutableText colour_tooltip = Text.translatable("item.ellediscs.discs.colour_tooltip", record_hex, label_hex);
+            tooltip.add(colour_tooltip.formatted(Formatting.GRAY));
+        }
     }
 
     @Override
     public String getTranslationKey(ItemStack stack) {
-        String str = "item.ellediscs.custom_disc";
         NbtCompound nbtCompound = stack.getNbt();
-
-        if (nbtCompound != null && nbtCompound.contains("CustomSound")) { str = "item.ellediscs.custom_disc_used"; }
-
-        return str;
+        if (nbtCompound != null && nbtCompound.contains("CustomSound")) { return "item.ellediscs.music_disc"; }
+        return super.getTranslationKey(stack);
     }
 }

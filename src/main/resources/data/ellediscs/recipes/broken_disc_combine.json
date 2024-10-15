@@ -6,6 +6,9 @@
   "label": {
     "item": "ellediscs:disc_label"
   },
-  "outputDisc": "ellediscs:custom_disc",
+  "modifier": {
+    "item": "minecraft:gunpowder"
+  },
+  "outputDisc": "ellediscs:custom_broken_disc",
   "accents": true
 }

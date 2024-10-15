@@ -2,7 +2,12 @@
   "item.ellediscs.disc_record": "Disc Record",
   "item.ellediscs.disc_label": "Disc Label",
 
-  "item.ellediscs.custom_disc": "Dyed Music Disc",
-  "item.ellediscs.custom_disc_used": "Music Disc",
-  "item.ellediscs.custom_disc.desc": "Use /audioplayer to apply audio"
+  "item.ellediscs.music_disc": "Music Disc",
+
+  "item.ellediscs.custom_disc": "Dyed Disc",
+  "item.ellediscs.custom_broken_disc": "Dyed Broken Disc",
+  "item.ellediscs.custom_echo_disc": "Dyed Echo Disc",
+
+  "item.ellediscs.discs.tip": "Use /audioplayer to apply audio",
+  "item.ellediscs.discs.colour_tooltip": "Record: #%s, Label: #%d"
 }
