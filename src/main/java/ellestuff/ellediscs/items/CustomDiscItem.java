@@ -55,13 +55,10 @@ public class CustomDiscItem extends MusicDiscItem {
 
     @Override
     public String getTranslationKey(ItemStack stack) {
-        if (stack.hasNbt()) {
-            NbtCompound nbt = stack.getNbt();
-            if (nbt != null && nbt.contains("CustomSound")) {
-                return "item.ellediscs.music_disc";
-            }
-        }
+        NbtCompound nbtCompound = stack.getNbt();
 
-        return super.getTranslationKey();
+        if (nbtCompound != null && nbtCompound.contains("CustomSound")) { return "item.ellediscs.music_disc"; }
+
+        return super.getTranslationKey(stack);
     }
 }

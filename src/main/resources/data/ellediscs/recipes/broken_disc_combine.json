@@ -1,10 +1,13 @@
 {
   "type": "ellediscs:disc_create",
   "record": {
-    "item": "ellediscs:broken_record"
+    "item": "ellediscs:disc_record"
   },
   "label": {
     "item": "ellediscs:disc_label"
+  },
+  "modifier": {
+    "item": "minecraft:cracked_stone_bricks"
   },
   "outputDisc": "ellediscs:custom_broken_disc",
   "accents": true

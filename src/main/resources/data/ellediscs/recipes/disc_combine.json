@@ -6,6 +6,7 @@
   "label": {
     "item": "ellediscs:disc_label"
   },
-  "outputDisc": "ellediscs:custom_disc",
+  "modifier": {},
+    "outputDisc": "ellediscs:custom_disc",
   "accents": true
-}
+},
