@@ -10,6 +10,9 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.JsonHelper;
+
+import java.util.Optional;
 
 public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     private DiscRecipeSerializer() { }
@@ -25,7 +28,12 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
 
         Ingredient record = Ingredient.fromJson(recipeJson.record);
         Ingredient label = Ingredient.fromJson(recipeJson.label);
-        Ingredient modifier = Ingredient.fromJson(recipeJson.modifier);
+
+        Optional<Ingredient> modifier = Optional.empty();
+        if (JsonHelper.hasElement(json, "modifier")) {
+            modifier = Optional.of(Ingredient.fromJson(JsonHelper.getObject(json, "modifier")));
+        }
+
         Item outputItem = Registries.ITEM.getOrEmpty(new Identifier(recipeJson.outputDisc)).get();
         ItemStack output = new ItemStack(outputItem, 1);
 
@@ -36,6 +44,7 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     public void write(PacketByteBuf packetData, CustomDiscRecipe recipe) {
         recipe.getRecord().write(packetData);
         recipe.getLabel().write(packetData);
+        recipe.getModifier().get().write(packetData);
         packetData.writeItemStack(recipe.getOutput());
         packetData.writeBoolean(recipe.getAccentBool());
     }
@@ -45,7 +54,7 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     public CustomDiscRecipe read(Identifier id, PacketByteBuf packetData) {
         Ingredient record = Ingredient.fromPacket(packetData);
         Ingredient label = Ingredient.fromPacket(packetData);
-        Ingredient modifier = Ingredient.fromPacket(packetData);
+        Optional<Ingredient> modifier = Optional.of(Ingredient.fromPacket(packetData));
         ItemStack output = packetData.readItemStack();
         boolean accents = packetData.readBoolean();
 

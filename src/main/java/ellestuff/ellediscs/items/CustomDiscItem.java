@@ -44,11 +44,7 @@ public class CustomDiscItem extends MusicDiscItem {
             String record_hex = Integer.toHexString(this.getRecordColor(stack)).toUpperCase();
             String label_hex = Integer.toHexString(this.getLabelColor(stack)).toUpperCase();
 
-            // This looks so dumb lol
-            MutableText colour_tooltip = Text.translatable("item.ellediscs.discs.record")
-                    .append(String.format(": #%s, ", record_hex))
-                            .append(Text.translatable("item.ellediscs.discs.label"))
-                                    .append(String.format(": #%s", label_hex));
+            MutableText colour_tooltip = Text.translatable("item.ellediscs.discs.colour_tooltip", record_hex, label_hex);
             tooltip.add(colour_tooltip.formatted(Formatting.GRAY));
         }
     }

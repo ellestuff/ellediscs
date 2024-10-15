@@ -7,7 +7,6 @@ import net.minecraft.registry.Registry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static ellestuff.ellediscs.ElleLootTables.modifyLootTables;
 import static ellestuff.ellediscs.items.ElleItems.registerElleItems;
 
 public class ElleDiscs implements ModInitializer {
@@ -20,7 +19,6 @@ public class ElleDiscs implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		registerElleItems();
-		modifyLootTables();
 
 		Registry.register(Registries.RECIPE_SERIALIZER, DiscRecipeSerializer.ID,
 				DiscRecipeSerializer.INSTANCE);
