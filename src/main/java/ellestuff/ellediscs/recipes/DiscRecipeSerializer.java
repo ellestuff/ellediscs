@@ -44,7 +44,10 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     public void write(PacketByteBuf packetData, CustomDiscRecipe recipe) {
         recipe.getRecord().write(packetData);
         recipe.getLabel().write(packetData);
-        recipe.getModifier().get().write(packetData);
+        packetData.writeBoolean(recipe.getModifier().isPresent());
+        if (recipe.getModifier().isPresent()) {
+            recipe.getModifier().get().write(packetData);
+        }
         packetData.writeItemStack(recipe.getOutput());
         packetData.writeBoolean(recipe.getAccentBool());
     }
@@ -54,7 +57,10 @@ public class DiscRecipeSerializer implements RecipeSerializer<CustomDiscRecipe>{
     public CustomDiscRecipe read(Identifier id, PacketByteBuf packetData) {
         Ingredient record = Ingredient.fromPacket(packetData);
         Ingredient label = Ingredient.fromPacket(packetData);
-        Optional<Ingredient> modifier = Optional.of(Ingredient.fromPacket(packetData));
+        Optional<Ingredient> modifier = Optional.empty();
+        if (packetData.readBoolean()) {
+            modifier = Optional.of(Ingredient.fromPacket(packetData));
+        }
         ItemStack output = packetData.readItemStack();
         boolean accents = packetData.readBoolean();
 
