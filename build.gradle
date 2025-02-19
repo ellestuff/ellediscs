@@ -26,6 +26,9 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// Adding support
+	compileOnly files("libs/amendments-1.2.12.jar")
 	
 }
 
