@@ -43,6 +43,7 @@ public class ElleDiscsClient implements ClientModInitializer {
 
 	public void registerCustomDisc(Item item) {
 		registerDiscRenderer(item);
+		registerDiscModel(item);
 		ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
 			Item stackItem = stack.getItem();
 			if (tintIndex == 0) {
