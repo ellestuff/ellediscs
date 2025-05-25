@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer2": "ellediscs:item/streaked"
+    "layer2": "ellediscs:item/disc_patterns/streaked"
   }
 }

@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:builtin/entity",
+  "gui_light": "front",
   "textures": {
-    "layer0": "ellediscs:item/echo_disc_bottom",
-    "layer1": "ellediscs:item/echo_disc_top"
+    "particle": "item/custom_echo_disc_base"
   }
 }

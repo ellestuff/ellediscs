@@ -99,9 +99,6 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
                     } else if (itemStack.isOf(ElleItems.LABEL_PATTERN)) {
                         DiscPattern pattern = DiscPatternItem.getPattern(itemStack);
 
-                        ElleDiscs.LOGGER.info(pattern.getName());
-                        ElleDiscs.LOGGER.info(pattern.getIdentifier().toString());
-
                         nbtCompound.putString("Pattern", pattern.getIdentifier().toString());
                         nbtCompound.putInt("PatternColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
                     }

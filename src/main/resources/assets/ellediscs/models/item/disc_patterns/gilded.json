@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer2": "ellediscs:item/gilded"
+    "layer2": "ellediscs:item/disc_patterns/gilded"
   }
 }

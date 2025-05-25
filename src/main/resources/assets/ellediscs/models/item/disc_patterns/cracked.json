@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer2": "ellediscs:item/cracked"
+    "layer2": "ellediscs:item/disc_patterns/cracked"
   }
 }

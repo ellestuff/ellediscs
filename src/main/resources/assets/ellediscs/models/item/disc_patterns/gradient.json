@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer2": "ellediscs:item/gradient"
+    "layer2": "ellediscs:item/disc_patterns/gradient"
   }
 }
