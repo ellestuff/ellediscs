@@ -4,15 +4,15 @@ import net.minecraft.util.Identifier;
 
 public class DiscPattern {
     private final Identifier identifier;
-    private final String texturePath;
+    private final Identifier modelId;
 
     public DiscPattern(Identifier identifier) {
         this.identifier = identifier;
-        this.texturePath = identifier.getNamespace() + ":item/disc_patterns/" + identifier.getPath();
+        this.modelId = new Identifier(identifier.getNamespace(), "disc_patterns/" + identifier.getPath());
     }
 
     public String getName() { return identifier.getPath(); }
-    public String getTexturePath() { return texturePath; }
+    public Identifier getModelId() { return modelId; }
     public String getTranslationKey() { return identifier.toTranslationKey("discpattern"); }
     public Identifier getIdentifier() { return identifier; }
 }

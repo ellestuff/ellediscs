@@ -1,6 +1,10 @@
-package ellestuff.ellediscs.recipes;
+package ellestuff.ellediscs.recipes.disc;
 
+import ellestuff.ellediscs.ElleDiscs;
 import ellestuff.ellediscs.items.CustomDyeableItem;
+import ellestuff.ellediscs.items.DiscPatternItem;
+import ellestuff.ellediscs.items.ElleItems;
+import ellestuff.ellediscs.patterns.DiscPattern;
 import net.minecraft.inventory.RecipeInputInventory;
 import net.minecraft.item.DyeableItem;
 import net.minecraft.item.ItemStack;
@@ -35,6 +39,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
         boolean hasRecord = false;
         boolean hasLabel = false;
         boolean hasModifier = false;
+        boolean hasPattern = false;
         //int dust = 0;
 
 
@@ -57,11 +62,16 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
                     return false;
                 }
                 hasModifier = true;
+            } else if (itemStack.isOf(ElleItems.LABEL_PATTERN)) {
+                if (hasPattern && !itemStack.isEmpty()) {
+                    return false;
+                }
+                hasPattern = true;
             } else if (!itemStack.isEmpty()) {
                 return false;
             };
         }
-        return hasRecord && hasLabel && (hasModifier || modifier.isEmpty());
+        return hasRecord && hasLabel && (hasModifier || modifier.isEmpty()) && (hasPattern ^ !accents);
     }
 
     public boolean fits(int width, int height) {
@@ -81,11 +91,19 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
         for(int i = 0; i < recipeInputInventory.size(); ++i) {
             ItemStack itemStack = recipeInputInventory.getStack(i);
             if (!itemStack.isEmpty()) {
-                if (itemStack.getItem() instanceof DyeableItem && ((DyeableItem)itemStack.getItem()).hasColor(itemStack)) {
+                if (itemStack.getItem() instanceof CustomDyeableItem && ((CustomDyeableItem)itemStack.getItem()).hasColor(itemStack)) {
                     if (record.test(itemStack)) {
                         nbtCompound.putInt("RecordColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
                     } else if (label.test(itemStack)) {
                         nbtCompound.putInt("LabelColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
+                    } else if (itemStack.isOf(ElleItems.LABEL_PATTERN)) {
+                        DiscPattern pattern = DiscPatternItem.getPattern(itemStack);
+
+                        ElleDiscs.LOGGER.info(pattern.getName());
+                        ElleDiscs.LOGGER.info(pattern.getIdentifier().toString());
+
+                        nbtCompound.putString("Pattern", pattern.getIdentifier().toString());
+                        nbtCompound.putInt("PatternColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
                     }
                 }
             }
