@@ -1,7 +1,8 @@
 package ellestuff.ellediscs.items;
 
+import ellestuff.ellediscs.ElleDiscs;
 import ellestuff.ellediscs.patterns.DiscPattern;
-import ellestuff.ellediscs.patterns.ElleDiscPatterns;
+import ellestuff.ellediscs.patterns.DiscPatterns;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,19 +15,26 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class DiscPatternItem extends CustomDyeableItem {
-    public final DiscPattern DEFAULT_PATTERN;
+    static DiscPattern DEFAULT_PATTERN;
 
     public DiscPatternItem(DiscPattern defaultPattern, int defaultColour, Item.Settings settings) {
         super(defaultColour, settings);
-        this.DEFAULT_PATTERN = defaultPattern;
+        DEFAULT_PATTERN = defaultPattern;
     }
 
-    public DiscPattern getPattern(ItemStack stack) {
+    public static DiscPattern getPattern(ItemStack stack) {
+        NbtCompound nbtCompound = stack.getNbt();
+
+        return nbtCompound != null && nbtCompound.contains("pattern") ? DiscPatterns.getById(nbtCompound.getString("pattern")) : DEFAULT_PATTERN;
+    }
+
+    public static void setPattern(ItemStack stack, DiscPattern pattern) {
         NbtCompound nbtCompound = stack.getOrCreateNbt();
-        return nbtCompound != null && nbtCompound.contains("pattern") ? ElleDiscPatterns.getById(nbtCompound.getString("pattern")) : DEFAULT_PATTERN;
+        assert nbtCompound != null;
+        nbtCompound.putString("pattern",pattern.getIdentifier().toString());
     }
 
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable(this.getPattern(stack).getTranslationKey()).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable(getPattern(stack).getTranslationKey()).formatted(Formatting.GRAY));
     }
 }

@@ -3,12 +3,15 @@ package ellestuff.ellediscs.patterns;
 import ellestuff.ellediscs.ElleDiscs;
 import net.minecraft.util.Identifier;
 
-public class ElleDiscPatterns {
-    public static DiscPattern getById(String id) {
-        Identifier identifier = new Identifier(id);
-        DiscPattern pattern = ElleRegistries.DISC_PATTERN.get(identifier);
+public class DiscPatterns {
+    public static DiscPattern getById(Identifier id) {
+        DiscPattern pattern = ElleRegistries.DISC_PATTERN.get(id);
 
         return pattern != null ? pattern : ElleRegistries.DISC_PATTERN.get(new Identifier(ElleDiscs.MODID, "none"));
+    }
+
+    public static DiscPattern getById(String id) {
+        return getById(new Identifier(id));
     }
 
     public static DiscPattern getById(String namespace, String id) {

@@ -1,4 +1,4 @@
-package ellestuff.ellediscs.recipes;
+package ellestuff.ellediscs.recipes.disc;
 
 import com.google.gson.JsonObject;
 
