@@ -1,6 +1,4 @@
 {
   "parent": "minecraft:item/generated",
-  "textures": {
-    "layer2": "ellediscs:item/disc_patterns/none"
-  }
+  "textures": {}
 }
