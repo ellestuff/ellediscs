@@ -37,7 +37,7 @@ public class CustomDiscRenderer {
 		matrices.translate(0.5, 0.5, 0.5);
 		loadedBaseModel.getTransformation().getTransformation(mode).apply(leftHanded, matrices);
 		matrices.scale(-1, 1, -1);
-		matrices.translate(0.03125, 0, 0);
+		matrices.translate(0.0625, 0, 0);
 
 		itemRenderer.renderItem(stack, ModelTransformationMode.NONE, false, matrices, vertexConsumers, light, overlay, loadedBaseModel);
 		itemRenderer.renderItem(stack, ModelTransformationMode.NONE, false, matrices, vertexConsumers, light, overlay, loadedPatternModel);

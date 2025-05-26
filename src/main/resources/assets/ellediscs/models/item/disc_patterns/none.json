@@ -1,4 +1,4 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "minecraft:item/template_music_disc",
   "textures": {}
 }
