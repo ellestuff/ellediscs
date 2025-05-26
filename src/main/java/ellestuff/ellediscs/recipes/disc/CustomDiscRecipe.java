@@ -71,7 +71,7 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
                 return false;
             };
         }
-        return hasRecord && hasLabel && (hasModifier || modifier.isEmpty()) && (hasPattern ^ !accents);
+        return hasRecord && hasLabel && (hasModifier || modifier.isEmpty()) && !(hasPattern && !accents);
     }
 
     public boolean fits(int width, int height) {
@@ -96,12 +96,14 @@ public class CustomDiscRecipe extends SpecialCraftingRecipe {
                         nbtCompound.putInt("RecordColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
                     } else if (label.test(itemStack)) {
                         nbtCompound.putInt("LabelColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
-                    } else if (itemStack.isOf(ElleItems.LABEL_PATTERN)) {
-                        DiscPattern pattern = DiscPatternItem.getPattern(itemStack);
-
-                        nbtCompound.putString("Pattern", pattern.getIdentifier().toString());
-                        nbtCompound.putInt("PatternColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
                     }
+                }
+                
+                if (itemStack.isOf(ElleItems.LABEL_PATTERN)) {
+                    DiscPattern pattern = DiscPatternItem.getPattern(itemStack);
+
+                    nbtCompound.putString("Pattern", pattern.getIdentifier().toString());
+                    nbtCompound.putInt("PatternColour", ((CustomDyeableItem)itemStack.getItem()).getColor(itemStack));
                 }
             }
         }
