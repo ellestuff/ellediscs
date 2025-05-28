@@ -1,0 +1,8 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_cat" },
+  "disc": "ellediscs:custom_disc",
+  "label": 5046016,
+  "pattern": 2058240,
+  "pattern_type": "ellediscs:center"
+}

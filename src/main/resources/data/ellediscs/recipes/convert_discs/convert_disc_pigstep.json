@@ -1,0 +1,9 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_pigstep" },
+  "disc": "ellediscs:custom_disc",
+  "record": 8733250,
+  "label": 16643423,
+  "pattern": 15301909,
+  "pattern_type": "ellediscs:gilded"
+}

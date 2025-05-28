@@ -19,16 +19,16 @@ import java.util.List;
 public class CustomDiscItem extends MusicDiscItem {
     int DEFAULT_RECORD_COLOR;
     int DEFAULT_LABEL_COLOR;
-    static DiscPattern DEFAULT_DISC_PATTERN;
+    DiscPattern DEFAULT_DISC_PATTERN;
     int DEFAULT_DISC_PATTERN_COLOR;
     int comparatorOutput;
 
     public CustomDiscItem(Item.Settings settings, int record_colour, int label_colour, DiscPattern default_pattern, int pattern_colour) {
         super(15, SoundEvents.INTENTIONALLY_EMPTY, settings, 1);
-        DEFAULT_RECORD_COLOR = record_colour;
-        DEFAULT_LABEL_COLOR = label_colour;
-        DEFAULT_DISC_PATTERN = default_pattern;
-        DEFAULT_DISC_PATTERN_COLOR = pattern_colour;
+        this.DEFAULT_RECORD_COLOR = record_colour;
+        this.DEFAULT_LABEL_COLOR = label_colour;
+        this.DEFAULT_DISC_PATTERN = default_pattern;
+        this.DEFAULT_DISC_PATTERN_COLOR = pattern_colour;
     }
 
     public int getRecordColor(ItemStack stack) {
@@ -46,7 +46,7 @@ public class CustomDiscItem extends MusicDiscItem {
         return nbtCompound != null && nbtCompound.contains("PatternColour", 99) ? nbtCompound.getInt("PatternColour") : DEFAULT_DISC_PATTERN_COLOR;
     }
 
-    public static DiscPattern getPattern(ItemStack stack) {
+    public DiscPattern getPattern(ItemStack stack) {
         NbtCompound nbtCompound = stack.getSubNbt("colours");
         return nbtCompound != null && nbtCompound.contains("Pattern") ? DiscPatterns.getById(nbtCompound.getString("Pattern")) : DEFAULT_DISC_PATTERN;
     }

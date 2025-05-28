@@ -6,16 +6,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 
 public class CustomDyeableItem extends Item implements DyeableItem {
-    int DEFAULT_COLOR;
+	int DEFAULT_COLOR;
 
-    public CustomDyeableItem(int defaultColour, Item.Settings settings) {
-        super(settings);
-        DEFAULT_COLOR = defaultColour;
-    }
+	public CustomDyeableItem(int defaultColour, Item.Settings settings) {
+		super(settings);
+		DEFAULT_COLOR = defaultColour;
+	}
 
-    @Override
-    public int getColor(ItemStack stack) {
-        NbtCompound nbtCompound = stack.getSubNbt("display");
-        return nbtCompound != null && nbtCompound.contains("color", 99) ? nbtCompound.getInt("color") : DEFAULT_COLOR;
-    }
+	@Override
+	public int getColor(ItemStack stack) {
+		NbtCompound nbtCompound = stack.getSubNbt("display");
+		return nbtCompound != null && nbtCompound.contains("color", 99) ? nbtCompound.getInt("color") : DEFAULT_COLOR;
+	}
 }

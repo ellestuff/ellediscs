@@ -1,0 +1,5 @@
+{
+  "type": "ellediscs:label_cutting",
+  "input": { "item": "ellediscs:label_pattern" },
+  "pattern": "ellediscs:edges"
+}

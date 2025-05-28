@@ -1,0 +1,6 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_blocks" },
+  "disc": "ellediscs:custom_disc",
+  "label": 14832699
+}

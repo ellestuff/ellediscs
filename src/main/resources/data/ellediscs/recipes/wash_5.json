@@ -1,5 +1,0 @@
-{
-  "type": "ellediscs:disc_separate",
-  "input": { "item": "minecraft:music_disc_5" },
-  "modifier": "minecraft:echo_shard"
-}

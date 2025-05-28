@@ -1,0 +1,7 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_mellohi" },
+  "disc": "ellediscs:custom_disc",
+  "pattern": 11665663,
+  "pattern_type": "ellediscs:striped"
+}

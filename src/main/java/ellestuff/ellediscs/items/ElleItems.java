@@ -13,27 +13,28 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 public class ElleItems {
-    // Disc Pieces
-    public static final Item DISC_RECORD = registerItem("disc_record", new CustomDyeableItem(0x515151, new FabricItemSettings()));
-    public static final Item DISC_LABEL = registerItem("disc_label", new CustomDyeableItem(0xffffff, new FabricItemSettings()));
+	// Disc Pieces
+	public static final Item DISC_RECORD = registerItem("disc_record", new CustomDyeableItem(0x515151, new FabricItemSettings()));
+	public static final Item DISC_LABEL = registerItem("disc_label", new CustomDyeableItem(0xffffff, new FabricItemSettings()));
 
-    // Custom Discs
-    public static final Item DYED_MUSIC_DISC = registerItem("custom_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.NONE, 0xffffff));
-    public static final Item DYED_BROKEN_DISC = registerItem("custom_broken_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0x141414, DiscPatterns.CRACKED, 0x343434));
-    public static final Item DYED_ECHO_DISC = registerItem("custom_echo_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x646464, 0x29dfeb, DiscPatterns.NONE, 0xffffff));
+	// Custom Discs
+	public static final Item DYED_MUSIC_DISC = registerItem("custom_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.NONE, 0xffffff));
+	public static final Item DYED_BROKEN_DISC = registerItem("custom_broken_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.NONE, 0xbbbbbb));
+	public static final Item DYED_ECHO_DISC = registerItem("custom_echo_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x646464, 0x29dfeb, DiscPatterns.NONE, 0xffffff));
+	public static final Item DYED_GRADIENT_DISC = registerItem("custom_gradient_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.GRADIENT, 0xbbbbbb));
 
-    // Pattern Items
-    public static final Item LABEL_PATTERN = ElleItems.registerItem("label_pattern", new DiscPatternItem(DiscPatterns.NONE, 0xffffff, new FabricItemSettings()));
+	// Pattern Items
+	public static final Item LABEL_PATTERN = ElleItems.registerItem("label_pattern", new DiscPatternItem(DiscPatterns.NONE, 0xffffff, new FabricItemSettings()));
 
-    public static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(ElleDiscs.MODID, name), item);
-    }
+	public static Item registerItem(String name, Item item) {
+		return Registry.register(Registries.ITEM, new Identifier(ElleDiscs.MODID, name), item);
+	}
 
-    public static void registerElleItems() {
-        // Ingredients Group
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
-            content.addBefore(Items.DISC_FRAGMENT_5, DISC_RECORD);
-            content.addAfter(DISC_RECORD, DISC_LABEL);
-        });
-    }
+	public static void registerElleItems() {
+		// Ingredients Group
+		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
+			content.addBefore(Items.DISC_FRAGMENT_5, DISC_RECORD);
+			content.addAfter(DISC_RECORD, DISC_LABEL);
+		});
+	}
 }
