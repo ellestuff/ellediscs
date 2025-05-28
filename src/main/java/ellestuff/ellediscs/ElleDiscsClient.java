@@ -27,11 +27,13 @@ public class ElleDiscsClient implements ClientModInitializer {
 		registerPatternModel(DiscPatterns.NONE);
 		registerPatternModel(DiscPatterns.SPIRAL);
 		registerPatternModel(DiscPatterns.STREAKED);
+		registerPatternModel(DiscPatterns.SLASHED);
 		registerPatternModel(DiscPatterns.STRIPED);
 
 		registerCustomDisc(DYED_MUSIC_DISC);
 		registerCustomDisc(DYED_BROKEN_DISC);
 		registerCustomDisc(DYED_ECHO_DISC);
+		registerCustomDisc(DYED_GRADIENT_DISC);
 
 		registerPatternItem(LABEL_PATTERN);
 	}
@@ -55,6 +57,7 @@ public class ElleDiscsClient implements ClientModInitializer {
 			}
 			return 0xFFFFFF; // Fallback color in case of emergency
 		}, item);
+
 	}
 
 	public void registerPatternItem(Item item) {

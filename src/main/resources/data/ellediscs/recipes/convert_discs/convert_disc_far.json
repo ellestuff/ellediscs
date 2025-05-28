@@ -1,0 +1,8 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_far" },
+  "disc": "ellediscs:custom_disc",
+  "label": 65424,
+  "pattern": 11992832,
+  "pattern_type": "ellediscs:edges"
+}

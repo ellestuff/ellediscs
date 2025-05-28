@@ -7,6 +7,7 @@
   "item.ellediscs.custom_disc": "Dyed Disc",
   "item.ellediscs.custom_broken_disc": "Dyed Broken Disc",
   "item.ellediscs.custom_echo_disc": "Dyed Echo Disc",
+  "item.ellediscs.custom_gradient_disc": "Dyed Gradient Disc",
 
   "item.ellediscs.discs.tip": "Use /audioplayer to apply audio",
   "item.ellediscs.discs.disc_tooltip": "Record: #%s, Label: #%s",
@@ -22,6 +23,10 @@
   "discpattern.ellediscs.gilded": "Gilded",
   "discpattern.ellediscs.gradient": "Gradient",
   "discpattern.ellediscs.spiral": "Spiral",
+  "discpattern.ellediscs.slashed": "Slashed",
   "discpattern.ellediscs.streaked": "Streaked",
-  "discpattern.ellediscs.striped": "Striped"
+  "discpattern.ellediscs.striped": "Striped",
+
+  "stat.ellediscs.clean_disc_part": "Disc Ingredients Cleaned",
+  "stat.ellediscs.disc_separate": "Discs Separated"
 }

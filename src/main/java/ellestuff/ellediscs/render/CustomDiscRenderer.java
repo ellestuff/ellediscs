@@ -26,7 +26,7 @@ public class CustomDiscRenderer {
 	public static void renderDisc(ItemStack stack, ModelTransformationMode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
 		ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
 		var world = MinecraftClient.getInstance().world;
-		var pattern = CustomDiscItem.getPattern(stack);
+		var pattern = ((CustomDiscItem)stack.getItem()).getPattern(stack);
 		var leftHanded = mode == ModelTransformationMode.FIRST_PERSON_LEFT_HAND || mode == ModelTransformationMode.THIRD_PERSON_LEFT_HAND;
 		var baseModel = new ModelIdentifier(new Identifier(Registries.ITEM.getId(stack.getItem()).toString() + "_base") ,"inventory");
 		var patternModel = new ModelIdentifier(pattern.getModelId(),"inventory");
@@ -36,8 +36,8 @@ public class CustomDiscRenderer {
 		matrices.push();
 		matrices.translate(0.5, 0.5, 0.5);
 		loadedBaseModel.getTransformation().getTransformation(mode).apply(leftHanded, matrices);
-		matrices.scale(-1, 1, -1);
-		matrices.translate(0.0625, 0, 0);
+		//matrices.scale(1, 1, -1);
+		//matrices.translate(-0.0625, 0, 0);
 
 		itemRenderer.renderItem(stack, ModelTransformationMode.NONE, false, matrices, vertexConsumers, light, overlay, loadedBaseModel);
 		itemRenderer.renderItem(stack, ModelTransformationMode.NONE, false, matrices, vertexConsumers, light, overlay, loadedPatternModel);
