@@ -26,6 +26,8 @@ public class DiscPatternItem extends CustomDyeableItem {
 		NbtCompound nbtCompound = stack.getOrCreateNbt();
 		if (!nbtCompound.contains("pattern")) { nbtCompound.putString("pattern",DEFAULT_PATTERN.getIdentifier().toString()); }
 
+		if (DiscPatterns.getById(nbtCompound.getString("pattern")) == DEFAULT_PATTERN) { nbtCompound.remove("pattern"); }
+
 		return DiscPatterns.getById(nbtCompound.getString("pattern"));
 	}
 
