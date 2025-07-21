@@ -41,6 +41,7 @@ public class LabelCuttingRecipeSerializer implements RecipeSerializer<LabelCutti
 	public void write(PacketByteBuf packetData, LabelCuttingRecipe recipe) {
 		recipe.getItem().write(packetData);
 		packetData.writeString(recipe.getPattern().getIdentifier().toString());
+		packetData.writeItemStack(recipe.getOutput());
 	}
 
 	@Override
@@ -48,9 +49,7 @@ public class LabelCuttingRecipeSerializer implements RecipeSerializer<LabelCutti
 	public LabelCuttingRecipe read(Identifier id, PacketByteBuf packetData) {
 		Ingredient item = Ingredient.fromPacket(packetData);
 		DiscPattern pattern = DiscPatterns.getById(packetData.readString());
-
-		ItemStack output = item.getMatchingStacks()[0].copy();
-		DiscPatternItem.setPattern(output,pattern);
+		ItemStack output = packetData.readItemStack();
 
 		return new LabelCuttingRecipe(item,pattern, id, output);
 	}

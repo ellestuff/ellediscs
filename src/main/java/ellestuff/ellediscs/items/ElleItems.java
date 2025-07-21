@@ -21,7 +21,7 @@ public class ElleItems {
 	public static final Item DYED_MUSIC_DISC = registerItem("custom_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.NONE, 0xffffff));
 	public static final Item DYED_BROKEN_DISC = registerItem("custom_broken_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.NONE, 0xbbbbbb));
 	public static final Item DYED_ECHO_DISC = registerItem("custom_echo_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x646464, 0x29dfeb, DiscPatterns.NONE, 0xffffff));
-	public static final Item DYED_GRADIENT_DISC = registerItem("custom_gradient_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.GRADIENT, 0xbbbbbb));
+	public static final Item DYED_GRADIENT_DISC = registerItem("custom_gradient_disc", new CustomDiscItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 0x515151, 0xffffff, DiscPatterns.NONE, 0xbbbbbb));
 
 	// Pattern Items
 	public static final Item LABEL_PATTERN = ElleItems.registerItem("label_pattern", new DiscPatternItem(DiscPatterns.NONE, 0xffffff, new FabricItemSettings()));
