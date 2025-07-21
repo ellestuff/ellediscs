@@ -2,6 +2,7 @@
   "values": [
     "ellediscs:custom_disc",
     "ellediscs:custom_broken_disc",
-    "ellediscs:custom_echo_disc"
+    "ellediscs:custom_echo_disc",
+    "ellediscs:custom_gradient_disc"
   ]
 }

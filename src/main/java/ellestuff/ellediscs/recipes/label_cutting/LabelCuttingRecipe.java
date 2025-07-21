@@ -22,11 +22,13 @@ import java.util.Optional;
 public class LabelCuttingRecipe extends StonecuttingRecipe {
 	private final Ingredient input;
 	private final DiscPattern pattern;
+	private final ItemStack output;
 
 	public LabelCuttingRecipe(Ingredient input, DiscPattern pattern, Identifier id, ItemStack output) {
-		super(id, "label_cutting", input, output);
+		super(id, "label_cutting_"+pattern.getIdentifier().toString(), input, output);
 		this.input = input;
 		this.pattern = pattern;
+		this.output = output;
 	}
 
 	public boolean fits(int width, int height) {
@@ -35,6 +37,7 @@ public class LabelCuttingRecipe extends StonecuttingRecipe {
 
 	public Ingredient getItem() { return input; }
 	public DiscPattern getPattern() { return pattern; }
+	public ItemStack getOutput() { return output; }
 
 	@Override
 	public ItemStack craft(Inventory inventory, DynamicRegistryManager registryManager) {
