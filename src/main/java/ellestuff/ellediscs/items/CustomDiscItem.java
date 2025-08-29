@@ -48,6 +48,11 @@ public class CustomDiscItem extends MusicDiscItem {
 
 	public int getPatternColor(ItemStack stack) {
 		NbtCompound nbtCompound = stack.getSubNbt("colours");
+
+        // Return label colour instead if there's no pattern applied
+        // (Mainly for gradient discs :p)
+        if (!nbtCompound.contains("Pattern")) { return getLabelColor(stack); }
+
 		return nbtCompound != null && nbtCompound.contains("PatternColour", 99) ? nbtCompound.getInt("PatternColour") : DEFAULT_DISC_PATTERN_COLOR;
 	}
 
@@ -59,9 +64,8 @@ public class CustomDiscItem extends MusicDiscItem {
 	//public void setComparatorOutput(int comparatorOutput) { this.comparatorOutput = comparatorOutput; }
 
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-		// AudioPlayer support :)
-		if (FabricLoader.getInstance().isModLoaded("audioplayer")) {tooltip.add(Text.translatable("item.ellediscs.discs.tip").formatted(Formatting.GRAY)); }
-		else { tooltip.add(Text.translatable("item.ellediscs.discs.tip_noap").formatted(Formatting.DARK_RED)); }
+		// AudioPlayer tip :)
+		tooltip.add(Text.translatable("item.ellediscs.discs.tip").formatted(Formatting.GRAY));
 
 		if (context.isAdvanced()) {
 			String record_hex = Integer.toHexString(getRecordColor(stack)).toUpperCase();

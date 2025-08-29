@@ -1,7 +1,0 @@
-{
-  "type": "ellediscs:label_pattern_modify",
-  "input": { "item": "ellediscs:label_pattern" },
-  "modifier": { "item": "minecraft:gold_ingot" },
-  "output": "ellediscs:gilded"
-}
-
