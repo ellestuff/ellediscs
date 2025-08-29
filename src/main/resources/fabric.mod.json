@@ -3,7 +3,7 @@
 	"id": "ellediscs",
 	"version": "${version}",
 	"name": "ellediscs.",
-	"description": "Adds craftable dyed music discs for use with AudioPlayer.",
+	"description": "Adds customizable dyed music discs for use with AudioPlayer.",
 	"authors": [
 		"ellestuff."
 	],
@@ -31,7 +31,6 @@
 		"fabric-api": "*"
 	},
 	"suggests": {
-		"simple-voice-chat": "*",
 		"audioplayer": "*"
 	}
 }
