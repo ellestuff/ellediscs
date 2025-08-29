@@ -1,0 +1,8 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_11" },
+  "disc": "ellediscs:custom_broken_disc",
+  "label": 3421236,
+  "pattern": 1315860,
+  "pattern_type": "ellediscs:cracked"
+}

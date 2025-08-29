@@ -1,0 +1,9 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_relic" },
+  "disc": "ellediscs:custom_disc",
+  "record": 9457729,
+  "label": 8972031,
+  "pattern": 2063318,
+  "pattern_type": "ellediscs:gilded"
+}

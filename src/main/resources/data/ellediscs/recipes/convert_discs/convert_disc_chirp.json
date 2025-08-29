@@ -1,0 +1,8 @@
+{
+  "type": "ellediscs:convert_disc",
+  "input": { "item": "minecraft:music_disc_chirp" },
+  "disc": "ellediscs:custom_disc",
+  "label": 8323074,
+  "pattern": 16711684,
+  "pattern_type": "ellediscs:slashed"
+}
