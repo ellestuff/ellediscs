@@ -1,11 +1,15 @@
 package ellestuff.ellediscs.items;
 
 import ellestuff.ellediscs.ElleDiscs;
+import ellestuff.ellediscs.patterns.DiscPattern;
 import ellestuff.ellediscs.patterns.DiscPatterns;
+import ellestuff.ellediscs.patterns.ElleRegistries;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -35,6 +39,25 @@ public class ElleItems {
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(content -> {
 			content.addBefore(Items.DISC_FRAGMENT_5, DISC_RECORD);
 			content.addAfter(DISC_RECORD, DISC_LABEL);
+
+            addDiscPatternPrefab(content, DiscPatterns.NONE);
+            addDiscPatternPrefab(content, DiscPatterns.CENTER);
+            addDiscPatternPrefab(content, DiscPatterns.CRACKED);
+            addDiscPatternPrefab(content, DiscPatterns.DUAL);
+            addDiscPatternPrefab(content, DiscPatterns.EDGES);
+            addDiscPatternPrefab(content, DiscPatterns.GILDED);
+            addDiscPatternPrefab(content, DiscPatterns.GRADIENT);
+            addDiscPatternPrefab(content, DiscPatterns.SPIRAL);
+            addDiscPatternPrefab(content, DiscPatterns.SLASHED);
+            addDiscPatternPrefab(content, DiscPatterns.STREAKED);
+            addDiscPatternPrefab(content, DiscPatterns.STRIPED);
+            
 		});
 	}
+
+    static void addDiscPatternPrefab(FabricItemGroupEntries content, DiscPattern pattern) {
+        ItemStack stack = LABEL_PATTERN.getDefaultStack();
+        DiscPatternItem.setPattern(stack, pattern);
+        content.add(stack);
+    }
 }

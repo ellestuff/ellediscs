@@ -1,11 +1,7 @@
 {
   "type": "ellediscs:disc_create",
-  "record": {
-    "item": "ellediscs:disc_record"
-  },
-  "label": {
-    "item": "ellediscs:disc_label"
-  },
+  "record": { "item": "ellediscs:disc_record" },
+  "label": { "item": "ellediscs:disc_label" },
   "outputDisc": "ellediscs:custom_disc",
   "accents": true
 }
